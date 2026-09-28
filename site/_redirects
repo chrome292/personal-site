@@ -1,0 +1,4 @@
+# The old site had every section at "/". These give the new section pages short aliases.
+/work        /work/storetracker/   301
+/storetracker /work/storetracker/  301
+/resume      /experience/          301

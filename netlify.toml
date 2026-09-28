@@ -1,0 +1,4 @@
+# Only used if the site is deployed from a Git repo. Headers and redirects live in site/_headers and site/_redirects.
+[build]
+  publish = "site"
+  command = "python3 build.py"
