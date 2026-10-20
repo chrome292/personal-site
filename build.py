@@ -173,7 +173,7 @@ ROLES = [
         "Worked with store managers on promotions to improve placement and sell-through.",
         "Recognized company-wide in Q2 for store-level execution. Pitched an original product idea through the company's innovation program.",
     ]),
-    ("Jun – Aug 2025", "Merchant Processing Solutions", "Sales Representative (contract)", "Annapolis, MD", "", [
+    ("May – Jul 2025", "Merchant Processing Solutions", "Sales Representative (contract)", "Annapolis, MD", "", [
         "Met 10 to 15 business owners a week, cold and by referral.",
         "Built pricing and equipment proposals from each merchant's card volume and how they ran.",
     ]),
@@ -206,7 +206,6 @@ ROLES = [
 
 # Shorter side jobs, listed under "Also". Leave dates "" when unknown.
 ALSO = [
-    ("Black Lion Cafe", "Sales & Marketing Lead", "Sterling, VA", "", "Led sales and marketing for an Ethiopian coffee company."),
     ("Productions Plus", "Brand Ambassador / Coffee Advisor", "Arlington, VA", "Aug – Sep 2025 (seasonal)", "Ran weekly Nespresso tastings in retail stores and helped customers pick machines."),
     ("Miel Coffee Co", "Event Barista", "Washington, DC", "", "Ran a mobile espresso bar for private and corporate events, with a custom drink menu for each."),
 ]
