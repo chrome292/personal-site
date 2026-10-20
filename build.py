@@ -164,7 +164,7 @@ PROBLEMS = [
 
 # (period, company, role, location, summary, bullets)
 ROLES = [
-    ("Dec 2025 – Sep 2026", "Altria Group Distribution Company", "Retail Merchandising Associate", "Baltimore area",
+    ("Dec 2025 – Oct 2026", "Altria Group Distribution Company", "Retail Merchandising Associate", "Baltimore area",
      "Covered about 570 stores across the Baltimore metro and nearby Maryland counties, including 7-Eleven, Royal Farms, Wawa, Walgreens and Food Lion.", [
         "Built a route model using geographic clustering and shortest-path solving. It cut total territory driving by 54% and let me fit more stores into a day.",
         "Built VisitTracker, an iPhone app that logged every store visit automatically.",
