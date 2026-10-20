@@ -20,7 +20,6 @@ LASTMOD = "2026-10-20"
 LINKS = [
     ("LinkedIn", "https://www.linkedin.com/in/conormaloney29"),
 ]
-REPO = "https://github.com/chrome292/store-visit-tracker"   # VisitTracker source
 # Résumé PDF, served from ./site. The contact page links it only once the file exists.
 RESUME = "/assets/conor-maloney-resume.pdf"
 
@@ -284,10 +283,7 @@ def page_home():
     <h2 id="visittracker">VisitTracker</h2>
     <p class="body" style="font-size:17px">An iPhone app that notices when I walk into one of my stores and logs the visit: arrival, departure and time on site. Each visit goes straight to a Google Sheet. I never have to tap anything.</p>
     <ul class="tags"><li>Swift</li><li>Core Location</li><li>Apps Script</li><li>TypeScript</li></ul>
-    <div class="actions" style="margin-top:8px">
-      <a class="arrow-link" href="/work/visittracker/">How I built it →</a>
-      <a class="arrow-link" href="{REPO}" rel="noopener" target="_blank">Code on GitHub ↗</a>
-    </div>
+    <a class="arrow-link" href="/work/visittracker/" style="margin-top:8px">How I built it →</a>
   </div>
   <a class="stage stage-home" href="/work/visittracker/" aria-label="Read the VisitTracker case study">
     {phone("ledger", "VisitTracker visits ledger screen")}
@@ -329,7 +325,6 @@ def page_work():
     <div><dt>Role</dt><dd>Designed, built and used it myself</dd></div>
     <div><dt>Scale</dt><dd>528 stores · about 200 automated tests</dd></div>
     <div><dt>Built with</dt><dd>Swift, SwiftUI, Core Location, Core Data, Google Apps Script, TypeScript</dd></div>
-    <div><dt>Code</dt><dd><a class="inline-link" href="{REPO}" rel="noopener" target="_blank">github.com/chrome292/store-visit-tracker ↗</a></dd></div>
   </dl>
   <div class="stage stage-case">
     {phone("ledger", "Visits ledger", lazy=False)}
@@ -375,10 +370,7 @@ def page_work():
   <div class="label"><span class="num">05</span><h2 class="h2">The result</h2></div>
   <div class="content" style="max-width:760px">
     <p class="result">A minute-by-minute record of every store visit across the territory, in a spreadsheet I could sort and analyze. I didn't have to log a thing.</p>
-    <div class="actions">
-      <a class="arrow-link" href="/experience/">Full work history →</a>
-      <a class="arrow-link" href="{REPO}" rel="noopener" target="_blank">Code on GitHub ↗</a>
-    </div>
+    <a class="arrow-link" href="/experience/">Full work history →</a>
   </div>
 </section>
 </article>
