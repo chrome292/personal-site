@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VisitTracker: An iPhone App That Logs Store Visits Automatically — Conor Maloney</title>
+<meta name="description" content="How Conor Maloney designed and built VisitTracker, a Swift iPhone app that used geofencing to log arrivals, departures and time on site across 528 stores and sync every visit to Google Sheets.">
+<link rel="canonical" href="https://conormaloney.me/work/visittracker/">
+<meta name="author" content="Conor Maloney">
+<meta name="theme-color" content="#1B2A24">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Conor Maloney">
+<meta property="og:title" content="VisitTracker: An iPhone App That Logs Store Visits Automatically — Conor Maloney">
+<meta property="og:description" content="How Conor Maloney designed and built VisitTracker, a Swift iPhone app that used geofencing to log arrivals, departures and time on site across 528 stores and sync every visit to Google Sheets.">
+<meta property="og:url" content="https://conormaloney.me/work/visittracker/">
+<meta property="og:image" content="https://conormaloney.me/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Conor Maloney, Baltimore, MD">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VisitTracker: An iPhone App That Logs Store Visits Automatically — Conor Maloney">
+<meta name="twitter:description" content="How Conor Maloney designed and built VisitTracker, a Swift iPhone app that used geofencing to log arrivals, departures and time on site across 528 stores and sync every visit to Google Sheets.">
+<meta name="twitter:image" content="https://conormaloney.me/assets/img/og.jpg">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/newsreader-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","url":"https://conormaloney.me/work/visittracker/","name":"VisitTracker case study","isPartOf":{"@type":"WebSite","@id":"https://conormaloney.me/#website"},"about":{"@id":"https://conormaloney.me/#person"},"author":{"@type":"Person","@id":"https://conormaloney.me/#person","name":"Conor Maloney","url":"https://conormaloney.me/"},"headline":"VisitTracker: an iPhone app that logs store visits automatically","description":"How Conor Maloney designed and built VisitTracker, a Swift iPhone app that used geofencing to log arrivals, departures and time on site across 528 stores and sync every visit to Google Sheets.","image":"https://conormaloney.me/assets/img/og.jpg","datePublished":"2026-08-31","dateModified":"2026-10-20","inLanguage":"en"}</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/">Conor Maloney.</a>
+    <nav class="site-nav" aria-label="Main"><a href="/">Home</a><a href="/work/visittracker/" aria-current="page">Work</a><a href="/experience/">Experience</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
+  </div>
+</header>
+<main id="main">
+
+<article>
+<div class="wrap page-head" style="padding-bottom:56px">
+  <div class="eyebrow accent">Case study · Built July–August 2026</div>
+  <h1 class="display">VisitTracker</h1>
+  <p class="serif" style="font-size:clamp(22px,2.4vw,30px);line-height:1.3;color:var(--ink-2);max-width:760px;text-wrap:pretty">An iPhone app that logged my store visits on its own, so I had an accurate record of where my workday went.</p>
+</div>
+<div class="wrap">
+  <dl class="facts">
+    <div><dt>Role</dt><dd>Designed, built and used it myself</dd></div>
+    <div><dt>Scale</dt><dd>528 stores · about 200 automated tests</dd></div>
+    <div><dt>Built with</dt><dd>Swift, SwiftUI, Core Location, Core Data, Google Apps Script, TypeScript</dd></div>
+    <div><dt>Code</dt><dd><a class="inline-link" href="https://github.com/chrome292/store-visit-tracker" rel="noopener" target="_blank">github.com/chrome292/store-visit-tracker ↗</a></dd></div>
+  </dl>
+  <div class="stage stage-case">
+    <img src="/assets/img/visittracker-ledger.webp" alt="Visits ledger" width="560" height="1218" decoding="async">
+    <img class="mid" src="/assets/img/visittracker-board.webp" alt="Visits board with live in-store timer" width="560" height="1218" decoding="async">
+    <img src="/assets/img/visittracker-map-today.webp" alt="Map of today&#x27;s route" width="560" height="1218" decoding="async">
+  </div>
+</div>
+
+<section class="wrap section split">
+  <div class="label"><span class="num">01</span><h2 class="h2">The problem</h2></div>
+  <div class="content">
+    <p class="body-lg">My Altria territory had about 570 stores across Maryland. Time in store was one of the main ways my work got measured, and nothing recorded it well. Logging by hand meant stopping at every store to write down times, rounding them, and sometimes missing one.</p>
+    <p class="body-lg">I had solid data on almost everything except my own day. I wanted the phone to keep that record for me.</p>
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="split">
+    <div class="label"><span class="num">02</span><h2 class="h2">What I built</h2></div>
+    <div class="content">
+      <p class="body-lg">The app runs in the background. When I walk into one of my stores, it logs the arrival. When I leave, it logs the departure and the time on site. Each visit goes to a Google Sheet. There's nothing to tap.</p>
+      <p class="body-lg">The app shows the data four ways.</p>
+    </div>
+  </div>
+  <div class="views"><figure><div class="shot"><img src="/assets/img/visittracker-board.webp" alt="VisitTracker Board screen" width="560" height="1218" loading="lazy" decoding="async"></div><figcaption><h3>Board</h3><p>Today&#x27;s visits in order, with a live timer for the store I&#x27;m in.</p></figcaption></figure><figure><div class="shot"><img src="/assets/img/visittracker-map-all.webp" alt="VisitTracker Map screen" width="560" height="1218" loading="lazy" decoding="async"></div><figcaption><h3>Map</h3><p>Every store visited, plus today&#x27;s route and miles driven.</p></figcaption></figure><figure><div class="shot"><img src="/assets/img/visittracker-stats.webp" alt="VisitTracker Stats screen" width="560" height="1218" loading="lazy" decoding="async"></div><figcaption><h3>Stats</h3><p>Visit counts, average time in store, time on site by weekday, and how many working days in a row are logged.</p></figcaption></figure><figure><div class="shot"><img src="/assets/img/visittracker-store-detail.webp" alt="VisitTracker Store history screen" width="560" height="1218" loading="lazy" decoding="async"></div><figcaption><h3>Store history</h3><p>Twelve weeks per store as a heatmap, showing the usual visit day and arrival time.</p></figcaption></figure></div>
+</section>
+
+<section class="wrap section split">
+  <div class="label"><span class="num">03</span><h2 class="h2">How I built it</h2></div>
+  <div class="content" style="gap:0">
+    <p class="body-lg" style="margin-bottom:24px">Three separate pieces.</p>
+    <ol class="plain parts ruled"><li><span class="n">1</span><div><h3>Geocoding tool · TypeScript</h3><p class="body">Takes the store list from an Excel export and finds coordinates for each address. If it can&#x27;t place an address, that store goes into a failure report instead of the app, so nothing gets tracked in the wrong spot. When the list grew from 131 stores to 528, it added only the new ones and left existing visit history alone.</p></div></li><li><span class="n">2</span><div><h3>iPhone app · Swift and SwiftUI</h3><p class="body">The app itself. The math lives in its own layer, apart from the screens, and that layer is fully tested. Every number on screen comes from tested code.</p></div></li><li><span class="n">3</span><div><h3>Google Sheets webhook · Apps Script</h3><p class="body">Takes each visit from the phone and writes it to the sheet. No server to maintain, and the data lands in a spreadsheet I already used every day.</p></div></li></ol>
+    <p class="note">I wrote a short spec before building each feature. I built it with AI coding tools. I made the design decisions, told the tools what to build, and tested every piece myself.</p>
+  </div>
+</section>
+
+<section class="wrap section stack" style="gap:40px">
+  <div class="stack" style="gap:8px"><span class="num">04</span><h2 class="h2">Problems I had to solve</h2></div>
+  <ul class="plain problems"><li><h3>iOS only watches 20 locations at a time. I had 528.</h3><p class="body">The app keeps a rough fix on where I am without running GPS all day. As I move into a new area, it swaps in the 20 nearest stores.</p></li><li><h3>Driving past a store isn&#x27;t a visit.</h3><p class="body">Each arrival pops up a lock-screen notification I can confirm or dismiss with one tap. Stops under three minutes get thrown out unless I confirm them.</p></li><li><h3>No signal can&#x27;t mean a lost visit.</h3><p class="body">Every visit saves to the phone first. Syncing is a separate step that keeps retrying until the sheet confirms it got the row.</p></li><li><h3>No duplicate rows.</h3><p class="body">Each visit has its own ID. If the phone sends the same visit twice, the sheet updates the row that&#x27;s already there.</p></li><li><h3>Edits are allowed, and they show.</h3><p class="body">I can fix a time, move a visit to the right store in a crowded plaza, or add one the phone missed. Anything edited or entered by hand stays flagged in the data.</p></li><li><h3>No Google login on the phone.</h3><p class="body">Each request carries a secret token stored in the iPhone Keychain. The sheet rejects anything without it.</p></li></ul>
+</section>
+
+<section class="wrap section section-last split">
+  <div class="label"><span class="num">05</span><h2 class="h2">The result</h2></div>
+  <div class="content" style="max-width:760px">
+    <p class="result">A minute-by-minute record of every store visit across the territory, in a spreadsheet I could sort and analyze. I didn't have to log a thing.</p>
+    <div class="actions">
+      <a class="arrow-link" href="/experience/">Full work history →</a>
+      <a class="arrow-link" href="https://github.com/chrome292/store-visit-tracker" rel="noopener" target="_blank">Code on GitHub ↗</a>
+    </div>
+  </div>
+</section>
+</article>
+</main>
+<section class="cta" aria-label="Get in touch">
+  <div class="wrap">
+    <div class="stack" style="gap:16px">
+      <div class="eyebrow">Get in touch</div>
+      <a class="mail" href="mailto:conormaloney29@gmail.com">conormaloney29@gmail.com ↗</a>
+    </div>
+    <div class="where">Based in Baltimore. Open to roles in Baltimore and Washington, DC.</div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="wrap">
+    <span>© 2026 Conor Maloney</span>
+    <nav aria-label="Footer">
+      <a href="/work/visittracker/">Work</a><a href="/experience/">Experience</a><a href="/about/">About</a><a href="https://www.linkedin.com/in/conormaloney29" rel="me noopener" target="_blank">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

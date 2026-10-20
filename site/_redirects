@@ -1,4 +1,11 @@
 # The old site had every section at "/". These give the new section pages short aliases.
-/work        /work/storetracker/   301
-/storetracker /work/storetracker/  301
-/resume      /experience/          301
+/work                /work/visittracker/  301
+/visittracker        /work/visittracker/  301
+/storetracker        /work/visittracker/  301
+/resume              /experience/         301
+# The app was renamed StoreTracker -> VisitTracker; keep old links working.
+/work/storetracker   /work/visittracker/  301
+/work/storetracker/* /work/visittracker/  301
+# What Drives Me was folded into About ("How I work").
+/what-drives-me      /about/              301
+/what-drives-me/*    /about/              301
