@@ -16,7 +16,7 @@ SITE = "https://conormaloney.me"          # canonical origin, no trailing slash
 EMAIL = "conormaloney29@gmail.com"
 LASTMOD = "2026-10-20"
 # Outbound profiles. Shown in the footer + contact page and used as schema.org sameAs.
-# Add GitHub / HARDWEAR here, e.g. ("GitHub", "https://github.com/USERNAME").
+# Add more profiles here, e.g. ("Instagram", "https://instagram.com/USERNAME").
 LINKS = [
     ("LinkedIn", "https://www.linkedin.com/in/conormaloney29"),
 ]
@@ -255,8 +255,9 @@ def page_home():
     return head("Conor Maloney — Field Sales, Marketing & Analytics | Baltimore, MD",
                 "Conor Maloney is a Baltimore-based field sales and retail merchandising professional with ten years in cafés and retail. He builds his own tools, including VisitTracker, an iPhone app that logs store visits automatically.",
                 "/", home_ld(), "profile") + header("Home") + f"""
+<div class="hero-band">
 <div class="wrap hero">
-  <div class="hero-text">
+  <div class="hero-text enter">
     <div class="eyebrow">Field sales · Merchandising · Marketing · Analytics</div>
     <h1>Conor Maloney</h1>
     <p class="hero-intro">I've worked in cafés, field sales and retail merchandising since 2015. Most recently I covered about 570 stores across Maryland for Altria. I like being out with customers, and I like knowing whether the work is paying off. When a process wastes time, I build something to fix it.</p>
@@ -268,8 +269,9 @@ def page_home():
   </div>
   <figure class="hero-portrait">
     <picture><source srcset="{IMG}conor-maloney.webp" type="image/webp"><img src="{IMG}conor-maloney.jpg" alt="Portrait of Conor Maloney" width="800" height="800" fetchpriority="high"></picture>
-    <figcaption>Baltimore, MD</figcaption>
+    <figcaption>Baltimore, MD <span aria-hidden="true">·</span> 39.29° N, 76.61° W</figcaption>
   </figure>
+</div>
 </div>
 
 <section class="wrap section split" aria-labelledby="what-i-do">
@@ -297,7 +299,7 @@ def page_home():
     <h2 id="history" class="h2-lg">Where I've worked</h2>
     <a class="arrow-link" href="/experience/" style="font-size:15px">Full work history →</a>
   </div>
-  <ul class="plain roles-brief ruled ruled-end">{roles}</ul>
+  <ul class="plain roles-brief">{roles}</ul>
 </section>
 """ + footer()
 
@@ -315,7 +317,7 @@ def page_work():
                 "How Conor Maloney designed and built VisitTracker, a Swift iPhone app that used geofencing to log arrivals, departures and time on site across 528 stores and sync every visit to Google Sheets.",
                 path, ld, "article") + header("Work") + f"""
 <article>
-<div class="wrap page-head" style="padding-bottom:56px">
+<div class="wrap page-head enter" style="padding-bottom:56px">
   <div class="eyebrow accent">Case study · Built July–August 2026</div>
   <h1 class="display">VisitTracker</h1>
   <p class="serif" style="font-size:clamp(22px,2.4vw,30px);line-height:1.3;color:var(--ink-2);max-width:760px;text-wrap:pretty">An iPhone app that logged my store visits on its own, so I had an accurate record of where my workday went.</p>
@@ -388,7 +390,7 @@ def page_experience():
     return head("Work History — Conor Maloney",
                 "Conor Maloney's work history since 2015: retail merchandising at Altria, field sales at Shift4, Merchant Processing Solutions and BDS Connected Solutions, and café management in Baltimore and Chestertown, MD.",
                 path, page_ld(path, "Work History — Conor Maloney", "ProfilePage", {"mainEntity": {"@id": PERSON_ID}})) + header("Experience") + f"""
-<div class="wrap page-head" style="gap:24px;padding-bottom:64px">
+<div class="wrap page-head enter" style="gap:24px;padding-bottom:64px">
   <div class="eyebrow">Experience · 2015 – 2026</div>
   <h1 class="display">Work history</h1>
   <p class="body-lg" style="font-size:19px;line-height:1.55;max-width:640px">Cafés first, then field sales and retail merchandising. Newest first.</p>
@@ -405,15 +407,15 @@ def page_about():
     skills = "".join(f'<li><h3 class="kicker">{e(g)}</h3><p>{e(i)}</p></li>' for g, i in SKILLS)
     path = "/about/"
     return head("About Conor Maloney",
-                "Washington College music and theatre graduate, industrial electronic musician (HARDWEAR), and former Altria merchandiser who covered about 570 stores across Maryland and built his own tools to do it.",
+                "Washington College music and theatre graduate and former Altria merchandiser who covered about 570 stores across Maryland and built his own tools to do it.",
                 path, page_ld(path, "About Conor Maloney", "AboutPage", {"mainEntity": {"@id": PERSON_ID}})) + header("About") + f"""
 <div class="wrap about section-last">
-  <div class="about-text">
+  <div class="about-text enter">
     <div class="eyebrow">About</div>
     <h1 class="display" style="font-size:clamp(52px,7vw,88px);line-height:1">Hi, I'm Conor.</h1>
     <p class="lede-serif" style="max-width:680px">I like problems that are part creative and part logistics. A messy process to clean up. A route to plan. A display that isn't selling.</p>
     <div class="stack" style="gap:20px;max-width:640px">
-      <p class="body-lg">I studied music and theatre at Washington College, and I still make music. I produce industrial electronic music as HARDWEAR.</p>
+      <p class="body-lg">I studied music and theatre at Washington College, and I still make music.</p>
       <p class="body-lg">After college I spent seven years running the front of house at a bakery café in Chestertown, then managed beverage programs in Baltimore. From there I moved into field sales, selling payment systems to small businesses. Most recently I worked in retail merchandising for Altria, covering about 570 stores across Maryland.</p>
       <p class="body-lg">That's where I started building my own tools. Planning a day across hundreds of stores is a scheduling problem, so I treated it like one. I wrote a route model that cut my driving by 54% and built <a class="inline-link" href="/work/visittracker/">VisitTracker</a>, an app that logged my store visits on its own. Neither was part of the job.</p>
       <p class="body-lg">In every job I've paid attention to the small stuff: how people move through a store, which displays get picked up, where time gets wasted. Then I fix what I can.</p>
@@ -444,7 +446,7 @@ def page_contact():
     return head("Contact Conor Maloney",
                 "Get in touch with Conor Maloney about field sales, merchandising, marketing and analytics roles in Baltimore and Washington, DC.",
                 path, page_ld(path, "Contact Conor Maloney", "ContactPage", {"mainEntity": {"@id": PERSON_ID}})) + header("Contact") + f"""
-<div class="wrap contact">
+<div class="wrap contact enter">
   <div class="eyebrow">Contact</div>
   <h1 class="display">Get in touch</h1>
   <p style="font-size:clamp(18px,1.8vw,22px);line-height:1.5;color:var(--ink-2);max-width:620px;text-wrap:pretty">I'm looking for field sales, merchandising, marketing and analytics roles in Baltimore or Washington, DC. Email is the fastest way to reach me.</p>
@@ -458,7 +460,7 @@ def page_404():
     h = head("Page not found — Conor Maloney", "This page doesn't exist. Head back to Conor Maloney's homepage.", "/404.html")
     h = h.replace("<meta name=\"author\"", "<meta name=\"robots\" content=\"noindex\">\n<meta name=\"author\"")
     return h + header("") + """
-<div class="wrap contact">
+<div class="wrap contact enter">
   <div class="eyebrow">404</div>
   <h1 class="display">Nothing here.</h1>
   <p class="body-lg">That page doesn't exist, or it moved when the site was rebuilt.</p>

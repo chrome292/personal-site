@@ -9,10 +9,12 @@
   --dark-muted:#A9B8AF;--dark-hover:#7FC4A0;
   --gutter:clamp(24px,5vw,64px);--gap-section:clamp(72px,10vw,120px);
   --serif:'Newsreader',Georgia,serif;--sans:'Geist',system-ui,-apple-system,sans-serif;
+  /* Field-notebook paper: fine fractal noise tinted with --ink, very low alpha */
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .106 0 0 0 0 .165 0 0 0 0 .141 0 0 0 .55 -.22'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+body{margin:0;background:var(--grain),var(--bg);font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
 main{flex:1}
 img{max-width:100%}
 a{color:var(--ink);text-decoration:none}
@@ -69,7 +71,11 @@ h1,h2,h3,p{margin:0}
 .ruled>*{border-top:1px solid var(--line)}
 .ruled-end{border-bottom:1px solid var(--line)}
 
-/* Home hero */
+/* Home hero: a band of topo contours behind it, masked so the text side stays clean */
+.hero-band{position:relative;isolation:isolate;overflow:hidden}
+.hero-band::before{content:"";position:absolute;inset:-40px 0 0;z-index:-1;pointer-events:none;
+  background:url(/assets/img/contours.svg) right max(-180px,calc(50% - 760px)) top -60px/min(1180px,120vw) auto no-repeat;opacity:.22;
+  -webkit-mask-image:linear-gradient(100deg,transparent 22%,#000 62%);mask-image:linear-gradient(100deg,transparent 22%,#000 62%)}
 .hero{padding-top:clamp(48px,8vw,96px);padding-bottom:clamp(64px,8vw,96px);display:flex;flex-wrap:wrap;gap:64px;align-items:flex-end}
 .hero-text{flex:1 1 520px;display:flex;flex-direction:column;gap:32px}
 .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,7.5vw,104px);line-height:.95;letter-spacing:-.03em}
@@ -79,10 +85,13 @@ h1,h2,h3,p{margin:0}
 .hero-intro{font-size:clamp(20px,2.2vw,24px);line-height:1.55;color:var(--ink-2);max-width:600px;text-wrap:pretty}
 .hero-portrait{flex:0 1 460px;display:flex;flex-direction:column;gap:12px;margin:0}
 .hero-portrait img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:top;display:block;border-radius:999px 999px 0 0}
-.hero-portrait figcaption{font-size:13px;color:var(--muted)}
+.hero-portrait figcaption{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.02em}
 
 .services{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:40px;flex:2 1 560px}
+.services{counter-reset:log}
+.services>div{counter-increment:log;border-top:1px solid var(--ink);padding-top:16px}
 .services h3{font-size:17px;font-weight:600;margin-bottom:12px}
+.services h3::before{content:counter(log,decimal-leading-zero);display:block;font-family:var(--serif);font-weight:400;font-size:15px;color:var(--accent);margin-bottom:10px;font-variant-numeric:tabular-nums}
 
 .feature{display:flex;flex-wrap:wrap;gap:64px;align-items:center}
 .feature-text{flex:1 1 380px;display:flex;flex-direction:column;gap:24px}
@@ -102,7 +111,13 @@ h1,h2,h3,p{margin:0}
 
 /* Role table (home) */
 .roles-brief{flex:2 1 560px}
-.roles-brief li{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);gap:24px;padding:20px 0;font-size:16px}
+.roles-brief li{display:grid;grid-template-columns:120px minmax(0,1fr) minmax(0,1fr);gap:24px;padding:20px 0 20px 34px;font-size:16px;position:relative}
+/* route line + stop markers; the newest stop is filled */
+.roles-brief li::before{content:"";position:absolute;left:0;top:25px;width:12px;height:12px;border-radius:50%;border:2px solid var(--accent);background:var(--bg);box-sizing:border-box;z-index:1}
+.roles-brief li:first-child::before{background:var(--accent)}
+.roles-brief li::after{content:"";position:absolute;left:5px;top:0;bottom:0;border-left:2px dotted var(--accent);opacity:.55}
+.roles-brief li:first-child::after{top:31px}
+.roles-brief li:last-child::after{bottom:auto;height:31px}
 .roles-brief .yrs{color:var(--muted)}.roles-brief .co{font-weight:500}.roles-brief .rl{color:var(--ink-2)}
 ul.plain{list-style:none;margin:0;padding:0}
 
@@ -164,7 +179,8 @@ ul.plain{list-style:none;margin:0;padding:0}
 .elsewhere{display:flex;gap:12px 28px;flex-wrap:wrap;font-size:16px;font-weight:500;list-style:none;margin:0;padding:0}
 
 /* Footer */
-.cta{background:var(--ink);color:var(--bg)}
+.cta{background:url(/assets/img/contours-dark.svg) right -220px center/900px auto no-repeat,var(--ink);color:var(--bg)}
+.cta{position:relative}.cta::before{content:"";position:absolute;inset:0;background:var(--ink);opacity:.86;pointer-events:none}.cta .wrap{position:relative}
 .cta .wrap{padding-top:80px;padding-bottom:80px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap}
 .cta .eyebrow{color:var(--dark-muted)}
 .cta a.mail{font-family:var(--serif);font-size:clamp(22px,4.5vw,56px);color:var(--bg);line-height:1.05;overflow-wrap:anywhere}
@@ -182,6 +198,19 @@ ul.plain{list-style:none;margin:0;padding:0}
   .role .period{flex-basis:100%;padding-top:0}
   .stage-home{height:420px}
   .about-side{position:static}
+}
+
+/* Page-load entrance: the opening block rises in, staggered; the hero portrait wipes up like a print developing */
+@media (prefers-reduced-motion:no-preference){
+  @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+  @keyframes wipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
+  @keyframes fade{from{opacity:0}}
+  .enter>*{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+  .enter>:nth-child(1){animation-delay:.05s}.enter>:nth-child(2){animation-delay:.15s}.enter>:nth-child(3){animation-delay:.27s}
+  .enter>:nth-child(4){animation-delay:.39s}.enter>:nth-child(5){animation-delay:.5s}.enter>:nth-child(n+6){animation-delay:.6s}
+  .hero-portrait img{animation:wipe 1.25s cubic-bezier(.65,0,.15,1) .2s both}
+  .hero-portrait figcaption{animation:rise .8s cubic-bezier(.2,.7,.2,1) 1.05s both}
+  .hero-band::before{animation:fade 2.4s ease-out both}
 }
 
 /* Scroll reveal — only when JS has run and motion is allowed; content is fully visible without it */
