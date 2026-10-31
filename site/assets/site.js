@@ -5,7 +5,8 @@
   document.documentElement.classList.add('js');
   var sel = 'main h1, main h2, main h3, main p, main figure, main li, main .stage, main dl';
   var els = [].filter.call(document.querySelectorAll(sel), function (el) {
-    return !el.parentElement.closest(sel);
+    // .enter blocks animate once on page load (CSS), so they skip the scroll reveal
+    return !el.parentElement.closest(sel) && !el.closest('.enter, .hero');
   });
   els.forEach(function (el) { el.classList.add('reveal'); });
   var io = new IntersectionObserver(function (entries) {
